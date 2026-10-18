@@ -1,5 +1,6 @@
 fastapi[standard]
 uvicorn
+jinja2
 sqlalchemy
 pymysql
 mysql-connector-python

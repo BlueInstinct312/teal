@@ -46,18 +46,17 @@ docker stop 391ec1829e7f
 ## Extra Exploratory on machine
 mysql -p
 SHOW DATABASES;
-CREATE DATABASE BlogApplication;
+CREATE DATABASE TealDB;
+USE TealDB;
+SHOW TABLES;
 
 -------------------Jupyter Notebook 
 
 python -m ipykernel install --user --name=.venv --display-name "Python (.venv)"
 
--------------------Project Teal
-# Purpose
-    1. (Donut Chart) Top food products [Units Sold] *{time basis}
-    2. (Line Graph) Top 5 food products over time duration [Sales] *{time basis}
-    3. (List) Top 10 food products [Sales, percentage change, units sold, orders] *{time basis}
-    4. (Bar Graph) Search food product [Sales, inventory, profit margin, cost]
-# Technology
-# Design
-# Usability
+-------------------Visual Studio Code
+Multi-cursor editing (CTRL + ALT + UP/DOWN Arrow)
+
+-------------------LLama
+ollama run llama3.2
+

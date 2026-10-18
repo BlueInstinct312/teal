@@ -1,0 +1,14 @@
+notebook
+pandas
+tensorflow
+bs4
+requests
+markdownify
+kor
+langchain[openai]
+langchain-community
+ollama
+pydantic
+sqlalchemy
+pymysql
+mysql-connector-python
