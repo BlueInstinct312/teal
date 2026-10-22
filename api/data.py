@@ -11,7 +11,7 @@ from database import URL_DATABASE, engine, SessionLocal, Base
 import models as models
 
 DATABASE = "TealDB"
-PROJECT_DATA_SAMPLE = "api/data/project_data.csv"
+PROJECT_DATA_SAMPLE = "../data/project_data.csv"
 
 class CreateDataTable():
 
@@ -42,7 +42,7 @@ class CreateDataTable():
         print("Datatables have been created successfully.")
 
     def read_data_from_csv(self) -> pd.DataFrame:
-        return pd.read_csv(PROJECT_DATA_SAMPLE, index=False)
+        return pd.read_csv(PROJECT_DATA_SAMPLE)
 
     def retrieve_food_df(self, df:pd.DataFrame) -> pd.DataFrame:
         food_df = df[["photo_id", "business_id", "caption", "food"]]
@@ -52,12 +52,15 @@ class CreateDataTable():
         business_df = df.drop(columns=["photo_id", "caption", "food", "is_open", "attributes", "hours"])
         return business_df
     
-    def seed_datatable(self, df:pd.DataFrame, table_name:str, insert_mode:str="replace") -> None:
-        df.to_sql(
-            name=table_name,
-            con=engine,
-            if_exists=insert_mode
-        )
+    def seed_datatable(self, df:pd.DataFrame, table_name:str, insert_mode:str="fail") -> None:
+        try:
+            df.to_sql(
+                name=table_name,
+                con=engine,
+                if_exists=insert_mode
+            )
+        except ValueError:
+            print("Data in TealDB already exists")
 
     def run_pipeline(self) -> None:
         self.__create_database__(db_name=DATABASE)
@@ -69,4 +72,3 @@ class CreateDataTable():
         self.seed_datatable(df=business_df, table_name="business")
 
 
-create_database("TealDB")
