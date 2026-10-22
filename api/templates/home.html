@@ -3,8 +3,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Teal Project</title>
-        <script src="https://jsdelivr.net"></script>
-        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <!-- <script src="https://jsdelivr.net"></script> -->
+        <!-- <script src="https://d3js.org"></script> -->
+         <script src="{{ url_for('static', path='js/d3.v7.min.js') }}"></script>
+        <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
         <script>
             const myData = {{ name | tojson }};
             console.log(myData)
@@ -17,9 +19,13 @@
             <h1>
                 {{name}}
             </h1>
+
+            <svg class="donut-chart"></svg>
+
             <!-- <div id="data-bridge" data-server-info="{{ name | tojson }}"></div> -->
-            <script src="{{ url_for('static', path='js/d3.js') }}"></script>
-            
+
+            <script src="{{ url_for('static', path='js/home.js') }}"></script>
+            <!-- <script type="module" src="../static/js/home.js"></script> -->
         </body>
     </head>
 </html>
